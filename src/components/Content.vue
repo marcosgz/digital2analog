@@ -8,24 +8,28 @@
       <BarChart
         :chart-data="binaryChartData"
         :options="binaryChartOptions"
+        class="chart"
        />
     </section>
     <section>
       <LineChart
         :chart-data="askChartData"
         :options="lineChartOptions"
+        class="chart"
       />
     </section>
     <section>
       <LineChart
         :chart-data="fskChartData"
         :options="lineChartOptions"
+        class="chart"
       />
     </section>
     <section>
       <LineChart
         :chart-data="pskChartData"
         :options="lineChartOptions"
+        class="chart"
       />
     </section>
   </div>
@@ -66,8 +70,10 @@ export default {
             return ticks;
           },
           ticks: {
-            maxRotation: 0,
+            maxRotation: 45,
             minRotation: 0,
+            stepSize: 1,
+            fontSize: 9,
             callback: function(value) {
               if (value === null) { return null }
               return value;
@@ -80,14 +86,12 @@ export default {
     let pskChartOpts = lineChartOpts;
 
     return {
-      text: 'ab',
+      text: 'xyz',
       color: '#f87979',
       binaryChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          // barPercentage: 1,
-          // categoryPercentage: 1,
           yAxes: [{
             ticks: {
               min: 0,
@@ -175,27 +179,28 @@ export default {
     },
     pskChartData() {
       let last = null;
-      const labels = this.binaries.flatMap((v) => {
-        // let b = parseInt(v);
+      let labels = []
+      this.binaries.forEach((v) => {
         if (last === null || last === v) {
           last = v;
-          return [('/> <' + v), null];
+          labels.push('/> <' + v, null);
         } else {
           last = v;
-          return [('/> <' + v), null, null];
+          labels.push('/> <' + v, null, null);
         }
       })
 
       last = null; // Redefine last
-      const data = this.binaries.flatMap(v => {
+      let data = []
+      this.binaries.forEach(v => {
         let b = parseInt(v) === 0 ? -1 : 1;
 
         if (last === null || last === b) {
           last = b;
-          return [b, -b];
+          data.push(b, -b);
         } else {
           last = b;
-          return [0, b, -b];
+          data.push(0, b, -b);
         }
       });
 
@@ -249,5 +254,10 @@ input[type=text] {
 section {
   background-color: #fff;
   margin-bottom: 45px;
+  padding: 25px 10px;
+  position: relative;
+}
+section > .chart {
+  height: 200px;
 }
 </style>
