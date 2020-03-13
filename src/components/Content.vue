@@ -134,7 +134,7 @@ export default {
         }),
         datasets: [
           {
-            label: 'ASK - Amplitude Modulation',
+            label: 'ASK - Amplitude-Shift Keying',
             borderColor: this.color,
             fill: false,
             pointRadius: 0,
@@ -159,7 +159,7 @@ export default {
         }),
         datasets: [
           {
-            label: 'FSK - Frequency Modulation',
+            label: 'FSK - Frequency-Shift Keying',
             borderColor: this.color,
             fill: false,
             pointRadius: 0,
@@ -208,7 +208,7 @@ export default {
         labels: labels,
         datasets: [
           {
-            label: 'PSK - Phase Modulation',
+            label: 'PSK - Phase-Shift Keying',
             borderColor: this.color,
             fill: false,
             pointRadius: 0,
