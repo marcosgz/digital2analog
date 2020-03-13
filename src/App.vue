@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Simulador de Modulação de Sinais</h1>
+    <Content />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Content from './components/Content.vue'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    Content
   }
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0px;
+  background-color: #efefef;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
+}
+h1 {
+  text-align: center;
 }
 </style>
